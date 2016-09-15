@@ -1,0 +1,58 @@
+{
+  "name": "Customer",
+  "plural": "Customers",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"      
+    },
+    "address": {
+      "type": "string"      
+    },
+    "unit_number": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"      
+    },
+    "state": {
+      "type": "string"      
+    },
+    "zip_code": {
+      "type": "number"      
+    }
+  },
+  "validations": [],
+  "relations": {
+    "orders": {
+      "type": "hasMany",
+      "model": "Order",
+      "foreignKey": ""
+    },
+    "businesses": {
+      "type": "hasMany",
+      "model": "Business",
+      "foreignKey": "customerid",
+      "through": "Order"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
