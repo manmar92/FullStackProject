@@ -1,11 +1,11 @@
 angular
   .module('app')
-  .controller('ViewOrderController', ['$scope', 'Order', '$rootScope',
-      function($scope, Order $rootScope) {
-    $scope.orders = Order.find({
+  .controller('ViewOrderController', ['$scope', 'Order',
+      function($scope, Order) {
+    $scope.order = Order.find({
       filter: {
         where: { 
-          customerid: $rootScope.currentCustomer.id 
+          customerid: $scope.currentCustomer.id 
         }
       }
     });

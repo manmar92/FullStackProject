@@ -31,7 +31,7 @@ angular
     $scope.register = function() {
       AuthService.register($scope.customer.email, $scope.customer.password)
         .then(function() {
-          $state.transitionTo('sign-up-success');
+          $state.transitionTo('add-order');
         })
         .catch(function(error) {
           console.log(error.data.error.message)

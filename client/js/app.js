@@ -31,8 +31,13 @@ angular
         url: '/sign-up',
         templateUrl: 'views/sign-up-form.html',
         controller: 'SignUpController'
+      })
+      .state('not-found', {
+        url: '/not-found',
+        templateUrl: 'views/not-found.html',
+        authenticate: true
       });
-    $urlRouterProvider.otherwise('login');
+    $urlRouterProvider.otherwise('not-found');
   }])
   .run(['$rootScope', '$state', function($rootScope, $state) {
     $rootScope.$on('$stateChangeStart', function(event, next) {
