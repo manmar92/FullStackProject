@@ -42,18 +42,19 @@ function initialize() {
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
   var address = scope.currentCustomer.addressString;
 
-
-  var lng = scope.order.address.split(':')[0]
-  var lat = scope.order.address.split(':')[1]
-
-  var marker1 = new google.maps.Marker({
-          map: map,
-          position: new google.maps.LatLng(lat, lng)
-      });
-
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
+
+      var lng = scope.order.address.split(':')[0]
+      var lat = scope.order.address.split(':')[1]
+
+      var marker1 = new google.maps.Marker({
+              map: map,
+              position: new google.maps.LatLng(lat, lng)
+          });
+
+      
       var marker2 = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
