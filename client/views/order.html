@@ -1,3 +1,92 @@
 <section>
-<h2 ng-show="currentCustomer">Hello {{currentCustomer.name}}</h2>
+<h1>Current Order</h1>
+<h2 ng-show="currentCustomer">Order {{order.id}} for {{currentCustomer.name}}</h2>
+
+Address: {{currentCustomer.addressString}}
+
+<br><br><br>
+
+<div id="map" style="width:100%;height:500px"></div>
+
+<center><img src="../img/starchup.png" style="width:100px"></center>
+
+
+<script>
+
+var appElement = document.querySelector('[ng-app]');
+var scope = angular.element(appElement).scope();
+
+// function myMap() {
+
+
+// 	var lng = scope.order.address.split(':')[0]
+//   var lat = scope.order.address.split(':')[1]
+//   var mapCanvas = document.getElementById("map");
+//   var mapOptions = {
+//     center: new google.maps.LatLng(lat, lng), 
+//     zoom: 5
+//   }
+//   var map = new google.maps.Map(mapCanvas, mapOptions);
+// }
+
+var geocoder;
+var map;
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(0, 0);
+  var mapOptions = {
+    zoom: 8,
+    center: latlng,
+    disableDefaultUI: true
+  }
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  var address = scope.currentCustomer.addressString;
+
+
+  var lng = scope.order.address.split(':')[0]
+  var lat = scope.order.address.split(':')[1]
+
+  var marker1 = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(lat, lng)
+      });
+
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker2 = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+
+      var markers = [marker1, marker2]
+
+      console.log(marker1)
+
+      var bounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < markers.length; i++) {
+        bounds.extend(markers[i].getPosition());
+      }
+
+      map.fitBounds(bounds);
+
+
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+
+
+
+}
+
+
+</script>
+
+
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2a33mc5YYTcDNtO6YHPctAhewJErlI7E&callback=initialize">
+</script>
+
 <section>

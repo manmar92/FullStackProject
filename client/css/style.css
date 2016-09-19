@@ -1,105 +1,72 @@
+@font-face {
+    font-family: 'ProximaNova';
+    src: url(../fonts/ProximaNova/proximanova-webfont.ttf);
+}
 /*global*/
 * {
-  margin:0;
   padding:0;
+  width: 900px;
+  margin: 0 auto;
 }
 body {
-  font-family:'courier new';
+  font-family:'ProximaNova';
   font-size:1rem;
 }
 button {
-  background:#eee;
+  background:#26DEBD;
   border:0;
-  color:#777;
+  color:#FFF;
   cursor:pointer;
-  font-family:'courier new';
+  font-family:'ProximaNova';
   font-size:1rem;
-  padding:.5rem;
-}
-button:active {
-  background:#ddd;
-}
-[disabled] {
-  background:#eee;
-  color:#ccc;
+  padding:1rem;
 }
 fieldset {
-  color:#777;
+  color:#FFF;
   padding:1rem;
 }
 fieldset legend {
-  border:1px solid #777;
+  border:1px solid #FFF;
   padding:0 .5rem;
 }
 label {
   display:inline-block;
-  text-align:right;
+  text-align:left;
   vertical-align:middle;
   width:200px;
+  margin-bottom: .5rem;
 }
 select {
-  background:#ddd;
+  background:#FFF;
   text-indent: 0.01px;
   text-overflow: "";
 }
 p {
   padding:1rem;
 }
-/*header*/
-body > header {
-  border-bottom:1px solid #ccc;
+h1 {
+  font-family:'ProximaNova';
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
-body > header h1 {
-  font-size:2rem;
-  padding:1rem 1rem 0 1rem;
-}
-body > header h2 {
-  font-size:1rem;
-  padding:0 1rem;
-}
-/*nav*/
-body > header nav {
-  padding:1rem;
-}
-body > header nav li {
-  display:inline-block;
-  padding-bottom:.5rem;
-}
-body > header nav li a {
-  color:#777;
-  padding:.5rem;
-  text-decoration:none;
-}
-body > header nav li a.active {
-  background:#eee;
-}
-/*main*/
-main section {
-  padding:1rem;
-}
-main section article {
-  padding-bottom:2rem;
-}
-main section article h1 {
-  font-size:1.5rem;
-}
-main section article h2 {
-  font-size:1rem;
-  margin-bottom:1rem;
+h2 {
+  padding-bottom: 2rem;
+  font-size: 1rem;  
 }
 /*main form*/
 main input,
 select,
 textarea {
-  background:#ddd;
-  border:0;
+  background:#FFF;
   display:inline-block;
-  font-family:'courier new';
+  font-size: 1rem;
+  font-family:'ProximaNova';
   margin-bottom:1rem;
-  padding:.5rem;
-  vertical-align:middle;
+  padding:1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
-main select,
-textarea {
-  width:300px;
+div.map {
+  box-sizing: border-box;
 }

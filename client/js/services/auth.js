@@ -9,6 +9,8 @@ angular
         .then(function(response) {
           $rootScope.currentCustomer = {
             id: response.user.id,
+            name: response.user.name,
+            addressString: response.user.address + ", " + response.user.unit_number + ", " + response.user.city + ", " + response.user.state + ", " + response.user.zip_code,
             tokenId: response.id,
             email: email
           };
@@ -40,7 +42,7 @@ angular
          email: email,
          password: password
        })
-       .$promise;
+       .$promise
     }
 
     return {
